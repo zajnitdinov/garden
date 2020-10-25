@@ -1,6 +1,19 @@
-.box {
+.container {
+  height: 100%;
+  font-size: 14px;
+  width: 890px;
+  margin: auto;
+}
+
+.information {
   display: flex;
+  justify-content: space-between;
+}
+
+.box {
   width: 970px;
+  margin: auto;
+  display: flex;
   flex-wrap: wrap;
   .cell {
     border-right: none;
@@ -12,10 +25,13 @@
   .cell:nth-child(n+57) {
     border-bottom: 1px solid black;
   }
+  .information {
+    display: block;
+  }
 }
 .cell {
-  width: 110px;
-  height: 100px;
+  width: 100px;
+  height: 70px;
   border: 1px solid black;
   padding: 5px;
   div {
