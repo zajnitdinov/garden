@@ -1,10 +1,14 @@
 import coins from "./coins";
-import ceed from "./ceed";
+import seed from "./seed";
+import cow from "./cow";
+import chicken from "./chicken";
 
 const reducer = (state , action) => {
     return{
         coins: coins(state, action),
-        ceed: ceed(state, action)
+        seed: seed(state, action),
+        cow: cow(state, action),
+        chicken: chicken(state, action)
     }
 }
 

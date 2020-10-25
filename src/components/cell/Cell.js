@@ -1,37 +1,30 @@
 import React, {useState} from 'react';
-import {chickenCell, cowCell, seedCell} from "./cellState";
 import DefaultCell from "./DefaultCell";
 import {connect} from "react-redux";
+import {obj} from "./obj";
 
-const Cell = ({addSeed}) => {
-    const [typeOfCell, setTypeOfCell] = useState('default');
-    const [seconds, setSeconds] = useState(0);
-    const renderCell = () => {
-        switch (typeOfCell) {
-            case 'cow': return cowCell;
-            case 'seed': return seedCell;
-            case 'chicken': return chickenCell;
-            default: return <DefaultCell handleClick={handleClick}/>;
-        }
-    }
-    const startTimer = () => {
+const Cell = ({addItem}) => {
+    const [typeOfCell, setTypeOfCell] = useState('default')
+    const [seconds, setSeconds] = useState(0)
+    const startTimer = (time, type) => {
         const timer = setInterval(() => {
             setSeconds(seconds => seconds + 1);
         },1000)
         setTimeout(() => {
             clearInterval(timer)
             setSeconds(0)
-            startTimer()
-            addSeed()
-        }, 3000)
+            addItem(type)
+            startTimer(time, type)
+        }, time)
     }
     const handleClick = (type) => {
+        const time = obj[type].time;
         setTypeOfCell(type);
-        startTimer();
+        startTimer(time, type);
     }
     return (
         <div className='cell'>
-            {renderCell()}
+            {typeOfCell !== 'default' ? obj[typeOfCell].html : <DefaultCell handleClick={handleClick}/>}
             {seconds}
         </div>
     );
@@ -39,7 +32,19 @@ const Cell = ({addSeed}) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addSeed: () => dispatch({type: 'ADD_SEED'})
+        addItem: (type) => {
+            switch (type) {
+                case 'seed':
+                    return dispatch({type: 'ADD_SEED'})
+                case 'chicken':
+                    return dispatch({type: 'ADD_CHICKEN'})
+                case 'cow':
+                    return dispatch({type: 'ADD_COW'})
+                default:
+                    break;
+            }
+
+        }
     }
 }
 

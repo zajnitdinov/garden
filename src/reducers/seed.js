@@ -1,13 +1,13 @@
-const ceed = (state, action) => {
+const seed = (state, action) => {
     if (state === undefined){
         return 0
     }
     switch (action.type) {
         case 'ADD_SEED':
-            return state.ceed + 1;
+            return state.seed + 1;
         default:
-            return state.ceed
+            return state.seed
     }
 }
 
-export default ceed;
+export default seed;
