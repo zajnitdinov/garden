@@ -1,26 +1,24 @@
 import React from 'react';
 import {connect} from "react-redux";
+import {spendMoney} from "../../actions";
+import {obj} from "./obj";
 
 const DefaultCell = ({handleClick, spendMoney}) => {
-
-    return (
-        <>
-            <div onClick={() => {handleClick('seed'); spendMoney(10)}}><b>пшеница</b> (10$)</div>
-            <div onClick={() => {handleClick('chicken'); spendMoney(50)}}><b>курица</b> (50$)</div>
-            <div onClick={() => {handleClick('cow'); spendMoney(100)}}><b>корова</b> (100$)</div>
-        </>
-    );
+    return Object.keys(obj).map((el) => {
+        const {id, cost, img} = obj[el];
+        const handleDefaultClick = () => {
+            handleClick(id);
+            spendMoney(cost);
+        }
+        return <div onClick={handleDefaultClick}>
+            <img className='icon' src={img} alt=""/>
+            <span>({cost}$)</span>
+        </div>
+    })
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        spendMoney: (payload) => {
-            dispatch({
-                type: 'SPEND_MONEY',
-                payload
-            })
-        }
-    }
+    return {spendMoney: payload => dispatch(spendMoney(payload))}
 }
 
 export default connect(null, mapDispatchToProps)(DefaultCell);

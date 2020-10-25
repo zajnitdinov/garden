@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import DefaultCell from "./DefaultCell";
 import {connect} from "react-redux";
 import {obj} from "./obj";
+import {addItem} from "../../actions";
 
 const Cell = ({addItem}) => {
     const [typeOfCell, setTypeOfCell] = useState('default')
@@ -31,21 +32,7 @@ const Cell = ({addItem}) => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        addItem: (type) => {
-            switch (type) {
-                case 'seed':
-                    return dispatch({type: 'ADD_SEED'})
-                case 'chicken':
-                    return dispatch({type: 'ADD_CHICKEN'})
-                case 'cow':
-                    return dispatch({type: 'ADD_COW'})
-                default:
-                    break;
-            }
-
-        }
-    }
+    return {addItem: (type) => dispatch(addItem(type))}
 }
 
 export default connect(null, mapDispatchToProps)(Cell);
