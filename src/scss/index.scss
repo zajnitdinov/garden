@@ -1,9 +1,13 @@
 @import "mixins";
 
+body {
+  background-color: #f4f4f2;
+}
+
 .container {
   height: 100%;
   font-size: 14px;
-  width: 890px;
+  width: 570px;
   margin: auto;
 }
 
@@ -13,7 +17,7 @@
 }
 
 .box {
-  width: 970px;
+  width: 570px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -22,26 +26,51 @@
     border-bottom: none;
   }
   .cell:nth-child(8n) {
-    border-right: 1px solid black;
+    border-right: 1px solid #bbbfca;
   }
   .cell:nth-child(n+57) {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #bbbfca;
   }
   .information {
     display: block;
   }
 }
 .cell {
-  width: 100px;
-  height: 70px;
-  border: 1px solid black;
+  font-size: 14px;
+  width: 60px;
+  height: 50px;
+  border: 1px solid #bbbfca;
   padding: 5px;
   div {
+    color: #495464;
+    display: flex;
+    align-items: center;
     cursor: pointer;
     margin: auto;
+    :hover {
+      color: black;
+    }
   }
 }
 .icon {
   width: 15px;
   height: 15px;
+}
+
+.primary-icon {
+  margin: auto;
+  width: 30px;
+  height: 30px;
+}
+
+.loading {
+  height: 15px;
+  width: 100%;
+  background-color: #bbbfca;
+}
+
+.progress {
+  height: 15px;
+  width: 0;
+  background-color: #f9813a;
 }
