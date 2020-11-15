@@ -3,19 +3,16 @@
 body {
   background-color: #f4f4f2;
 }
-
 .container {
   height: 100%;
   font-size: 14px;
   width: 570px;
   margin: auto;
 }
-
 .information {
   display: flex;
   justify-content: space-between;
 }
-
 .box {
   width: 570px;
   margin: auto;
@@ -56,21 +53,33 @@ body {
   width: 15px;
   height: 15px;
 }
-
 .primary-icon {
   margin: auto;
   width: 30px;
   height: 30px;
 }
-
 .loading {
   height: 15px;
   width: 100%;
   background-color: #bbbfca;
 }
-
 .progress {
   height: 15px;
   width: 0;
   background-color: #f9813a;
+}
+.message {
+  width: 200px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #ec0101;
+  text-align: center;
+  padding: 5px;
+  color: #f5efef;
+  :hover {
+    top: -20px;
+  }
 }
